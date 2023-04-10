@@ -1,0 +1,32 @@
+.Home {
+  position: absolute;
+  top: calc(50% - 50px);
+  left: calc(50% - 200px);
+  @include flex_setting(center, flex-start, 40px);
+  @include tablet {
+    top: calc(50% - 10px);
+  }
+  .cityCard,
+  .actvityCard {
+    border: 3px solid rgba(0, 0, 0, 0.774);
+    padding: 20px;
+    @include flex_setting(center, center);
+    @include size(180px, 240px);
+    background-size: cover;
+    @include tablet {
+      @include size(200px, 260px);
+    }
+  }
+  .cityCard {
+    background-image: url("https://images.unsplash.com/photo-1518005068251-37900150dfca?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=873&q=80");
+  }
+  .actvityCard {
+    background-image: url("https://images.unsplash.com/photo-1611765083444-a3ce30f1c885?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80");
+  }
+  span {
+    background-color: white;
+    padding: 20px;
+    font-weight: bold;
+    color: black;
+  }
+}

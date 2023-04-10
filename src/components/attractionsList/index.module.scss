@@ -1,0 +1,11 @@
+.AttractionList {
+  display: flex;
+  margin: 40px 10px 120px 10px;
+
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+  @include tablet {
+    margin-bottom: 60px;
+  }
+}

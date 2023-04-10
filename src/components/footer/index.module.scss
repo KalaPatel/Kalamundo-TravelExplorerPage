@@ -1,0 +1,24 @@
+.Footer {
+  z-index: 1;
+  position: fixed;
+  bottom: 0;
+  background-color: #085c7a;
+  color: white;
+  @include size(100%, 100px);
+  @include flex_setting(center, center, 30px);
+  @include tablet {
+    @include size(100%, 50px);
+  }
+  .iconsWrapper {
+    @include flexGDW(10px);
+    .icons {
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: transform $timeFast;
+
+      &:hover {
+        transform: scale(1.3);
+      }
+    }
+  }
+}

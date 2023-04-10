@@ -1,0 +1,61 @@
+.menuWrapper {
+  position: absolute;
+  // top: 50px;
+  // right: 30px;
+  top: 100%;
+  right: 5%;
+  gap: 30px;
+  background-color: #062500e2;
+  border-radius: 3px;
+  justify-content: center;
+  @include size(150px, 120px);
+  @include flex_setting(column, center, center, 30px);
+  .menuList {
+    list-style-type: none;
+    text-align: center;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    .link {
+      padding: 5px;
+      color: white;
+    }
+    .link:hover {
+      text-decoration: underline;
+      background-color: #062500c7;
+      box-shadow: 2px 2px 2px black;
+    }
+
+    li:hover {
+      transform: scale(1.1);
+    }
+  }
+  @include tablet {
+    display: none;
+  }
+}
+
+.show {
+  animation-name: openMenu;
+  animation-direction: alternate;
+  transition: all $timeMedium linear;
+  animation-duration: $timeSlow;
+}
+
+.hide {
+  opacity: 0 !important;
+  animation-name: openMenu;
+  animation-direction: reverse;
+  transition: all $timeMedium linear;
+  animation-duration: $timeSlow;
+}
+
+@keyframes openMenu {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

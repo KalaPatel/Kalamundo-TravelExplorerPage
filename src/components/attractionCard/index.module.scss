@@ -1,0 +1,51 @@
+.Card {
+  position: relative;
+  @include size(400px, 250px);
+  box-shadow: inset 0px 0px 3px #6b1405a7;
+  cursor: pointer;
+  border-radius: 8px;
+  overflow: hidden;
+  .image {
+    @include size(400px, 150px);
+
+    img {
+      @include size(100%);
+      border-top-right-radius: 8px;
+      border-top-left-radius: 8px;
+      object-fit: cover;
+    }
+  }
+  .textWrapper {
+    h4 {
+      color: #33482e;
+      margin-bottom: 10px;
+    }
+    padding: 10px;
+
+    span::before {
+      content: "  #";
+      font-weight: bold;
+    }
+
+    span:hover {
+      color: #dd6a57;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+  }
+  .heartWrapper {
+    position: absolute;
+    right: 20px;
+    bottom: 80px;
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+    @include flex-setting(center, center);
+    background-color: #fe7382;
+    cursor: pointer;
+    .heartIcon {
+      font-size: 1.4rem;
+      color: white;
+    }
+  }
+}
