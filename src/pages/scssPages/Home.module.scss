@@ -1,17 +1,18 @@
 .Home {
   position: absolute;
   top: calc(50% - 50px);
-  left: calc(50% - 200px);
+  left: calc(50% - 180px);
   @include flex_setting(center, flex-start, 40px);
   @include tablet {
     top: calc(50% - 10px);
+    left: calc(50% - 200px);
   }
   .cityCard,
   .actvityCard {
     border: 3px solid rgba(0, 0, 0, 0.774);
     padding: 20px;
     @include flex_setting(center, center);
-    @include size(180px, 240px);
+    @include size(160px, 230px);
     background-size: cover;
     @include tablet {
       @include size(200px, 260px);
