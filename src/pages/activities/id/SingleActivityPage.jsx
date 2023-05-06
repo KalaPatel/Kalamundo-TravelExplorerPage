@@ -45,73 +45,79 @@ export default function SingleActivityPage() {
 
   return (
     <>
-      {activityInfo.map((item) => (
-        <div className={styles.wrapper} key={item.name}>
-          <h1>{item.name}</h1>
-          <div className={styles.container}>
-            <img
-              src="https://streetviewhub.com/shots"
-              alt={item.name}
-              className={styles.img}
-            />
-            <div className={styles.cardInfo}>
-              <h4>Activity type:</h4>
-              <ul className={styles.list}>
-                {item["@type"].map((element) => (
-                  <li key={element}>- {element}</li>
-                ))}
-              </ul>
-              <hr />
-              <h4>Contacts:</h4>
+      {activityInfo.length > 0 ? (
+        activityInfo.map((item) => (
+          <div className={styles.wrapper} key={item.name}>
+            <h1>{item.name}</h1>
+            <div className={styles.container}>
+              <img
+                src="https://streetviewhub.com/shots"
+                alt={item.name}
+                className={styles.img}
+              />
+              <div className={styles.cardInfo}>
+                <h4>Activity type:</h4>
+                <ul className={styles.list}>
+                  {item["@type"].map((element) => (
+                    <li key={element}>- {element}</li>
+                  ))}
+                </ul>
+                <hr />
+                <h4>Contacts:</h4>
 
-              <span className={styles.contract}>
-                {item.address.addressLocality}, {item.address.addressRegion},
-                {` ${item.address.addressCountry}`}
-              </span>
+                <span className={styles.contract}>
+                  {item.address.addressLocality}, {item.address.addressRegion},
+                  {` ${item.address.addressCountry}`}
+                </span>
 
-              <p className={styles.contract}>
-                <span className={styles.span}>Tel:</span> {item.telephone}
-              </p>
-              <p className={styles.contract}>
-                <span className={styles.span}>More info:</span>
-              </p>
-              <a
-                className={styles.contract}
-                href="https://www.theadventureisland.com/"
-              >
-                {item.url}
-              </a>
+                <p className={styles.contract}>
+                  <span className={styles.span}>Tel:</span> {item.telephone}
+                </p>
+                <p className={styles.contract}>
+                  <span className={styles.span}>More info:</span>
+                </p>
+                <a
+                  className={styles.contract}
+                  href="https://www.theadventureisland.com/"
+                >
+                  {item.url}
+                </a>
+                <form onSubmit={onHadleSubmit}>
+                  <input
+                    type="date"
+                    onChange={onHandleDateInput}
+                    value={dateInput}
+                  />
+                  <input
+                    type="time"
+                    onChange={onHandleTimeInput}
+                    value={timeInput}
+                  />
+                  <input
+                    type="submit"
+                    value="controlla disponibilità"
+                    className={styles.submitBtn}
+                  />
+                </form>
+                {popupVisible && (
+                  <p>
+                    {`Il ${item.name} alle ore ${searchParams.get(
+                      "time"
+                    )} il giorno
+                    ${searchParams.get("date")} è disponibile!`}
+                  </p>
+                )}
+              </div>
             </div>
-            <form onSubmit={onHadleSubmit}>
-              <input
-                type="date"
-                onChange={onHandleDateInput}
-                value={dateInput}
-              />
-              <input
-                type="time"
-                onChange={onHandleTimeInput}
-                value={timeInput}
-              />
-              <input
-                type="submit"
-                value="controlla disponibilità"
-                className={styles.submitBtn}
-              />
-            </form>
-            {popupVisible && (
-              <p>
-                {`Il ${item.name} alle ore ${searchParams.get("time")} il giorno
-                  ${searchParams.get("date")} è disponibile!`}
-              </p>
-            )}
+            <iframe
+              className={styles.googleMap}
+              src={`https://maps.google.com/maps/?q=+${item.geo.latitude}+,+${item.geo.longitude}&output=embed`}
+            ></iframe>
           </div>
-          <iframe
-            className={styles.googleMap}
-            src={`https://maps.google.com/maps/?q=+${item.geo.latitude}+,+${item.geo.longitude}&output=embed`}
-          ></iframe>
-        </div>
-      ))}
+        ))
+      ) : (
+        <p>Nessun risultato trovato. Provate ad essere più specifici </p>
+      )}
     </>
   );
 }
